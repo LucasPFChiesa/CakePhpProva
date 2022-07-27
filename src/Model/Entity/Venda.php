@@ -9,7 +9,7 @@ class Venda
     private $id;
     private $data;
     Private $endereçoEntrega;
-    private bool $isPago;
+    private bool $statusPagamento;
 
     /**
      * @param $dataVenda
@@ -23,6 +23,36 @@ class Venda
         $this->isPago = $isPago;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
+    /**
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEndereçoEntrega()
+    {
+        return $this->endereçoEntrega;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPago(): bool
+    {
+        return $this->isPago;
+    }
 
 }
