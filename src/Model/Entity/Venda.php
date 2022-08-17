@@ -1,58 +1,41 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Model\Entity;
 
-use phpDocumentor\Reflection\Types\Boolean;
+use Cake\ORM\Entity;
 
-class Venda
+/**
+ * Venda Entity
+ *
+ * @property int $id
+ * @property int $cliente_id
+ * @property int $produto_id
+ * @property \Cake\I18n\FrozenTime|null $data
+ * @property string $endereco_entrega
+ * @property string|null $status
+ *
+ * @property \App\Model\Entity\Cliente $cliente
+ * @property \App\Model\Entity\Produto $produto
+ */
+class Venda extends Entity
 {
-    private $id;
-    private $data;
-    Private $endereçoEntrega;
-    private bool $statusPagamento;
-
     /**
-     * @param $dataVenda
-     * @param $endereçoEntrega
-     * @param bool $isPago
+     * Fields that can be mass assigned using newEntity() or patchEntity().
+     *
+     * Note that when '*' is set to true, this allows all unspecified fields to
+     * be mass assigned. For security purposes, it is advised to set '*' to false
+     * (or remove it), and explicitly make individual fields accessible as needed.
+     *
+     * @var array<string, bool>
      */
-    public function __construct($data, $endereçoEntrega, bool $isPago)
-    {
-        $this-$data = $data;
-        $this->endereçoEntrega = $endereçoEntrega;
-        $this->isPago = $isPago;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getData()
-    {
-        return $this->data;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEndereçoEntrega()
-    {
-        return $this->endereçoEntrega;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isPago(): bool
-    {
-        return $this->isPago;
-    }
-
+    protected $_accessible = [
+        'cliente_id' => true,
+        'produto_id' => true,
+        'data' => true,
+        'endereco_entrega' => true,
+        'status' => true,
+        'cliente' => true,
+        'produto' => true,
+    ];
 }

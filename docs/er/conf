@@ -1,0 +1,31 @@
+CREATE TABLE `clientes` (
+  `id` INT(10) UNIQUE NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  `data_nasc` DATETIME DEFAULT NULL,
+  `cpf_cnpj` VARCHAR(15) NOT NULL,
+  `endereco` VARCHAR(45) NOT NULL,
+  `fone` VARCHAR(45) DEFAULT NULL,
+  `email` VARCHAR(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+  );
+
+  CREATE TABLE `produtos` (
+  `id` INT(10) UNIQUE NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  `descricao` TEXT NULL,
+  `categoria` VARCHAR(20) NULL,
+  `preco` DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`id`)
+  );
+
+  CREATE TABLE `vendas` (
+  `id` INT(10) NOT NULL AUTO_INCREMENT,
+  `cliente_id` INT(10) NOT NULL,
+  `produto_id` INT(10) NOT NULL,
+  `data` DATETIME DEFAULT NULL,
+  `endereco_entrega` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(20) DEFAULT NULL,
+  CONSTRAINT FOREIGN KEY (`cliente_id`) REFERENCES `clientes`(`id`),
+  CONSTRAINT FOREIGN KEY (`produto_id`) REFERENCES `produtos`(`id`),
+  PRIMARY KEY (`id`)
+  );
